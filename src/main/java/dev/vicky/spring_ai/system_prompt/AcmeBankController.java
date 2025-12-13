@@ -1,4 +1,4 @@
-package dev.vicky.spring_ai.prompt;
+package dev.vicky.spring_ai.system_prompt;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Qualifier;
