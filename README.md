@@ -4,7 +4,9 @@
 [![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
 [![Spring AI](https://img.shields.io/badge/Spring%20AI-1.1.2-blue.svg)](https://spring.io/projects/spring-ai)
 [![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o-purple.svg)](https://openai.com/)
-[![Google Gemini](https://img.shields.io/badge/Google-Gemini-blue.svg)](https://ai.google/)
+[![Google Gemini](https://img.shields.io/badge/Google-Gemini-blue.svg)](https://gemini.google.com/app)
+
+
 A comprehensive demonstration project showcasing the power of **Spring AI** to build intelligent, AI-native applications. This repository integrates industry-leading LLMs like **OpenAI (GPT-4o)** and **Google Gemini** to solve real-world problems using modern AI patterns.
 
 ---
