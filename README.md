@@ -102,4 +102,5 @@ I am a Backend Developer passionate about the intersection of Enterprise Java an
 - [GitHub](https://github.com/vickyajmera120)
 
 ---
-*Built with ❤️ using Spring AI.*
+
+<p align="center">Made with ❤️ for the Spring Community</p>
