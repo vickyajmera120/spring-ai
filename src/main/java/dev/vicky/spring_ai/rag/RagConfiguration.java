@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.ai.document.Document;
-import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.openai.OpenAiEmbeddingModel;
 import org.springframework.ai.reader.TextReader;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
@@ -25,7 +25,7 @@ public class RagConfiguration {
 	private Resource models;
 
 	@Bean
-	public SimpleVectorStore simpleVectorStore(final EmbeddingModel embeddingModel) {
+	public SimpleVectorStore simpleVectorStore(final OpenAiEmbeddingModel embeddingModel) {
 
 		final SimpleVectorStore vectorStore = SimpleVectorStore.builder(embeddingModel).build();
 		final File vectorStoreFile = getVectorStoreFile();
