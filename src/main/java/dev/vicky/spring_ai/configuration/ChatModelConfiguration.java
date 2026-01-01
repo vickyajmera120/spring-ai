@@ -6,6 +6,7 @@ import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.google.genai.GoogleGenAiChatModel;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.openai.OpenAiChatModel;
+import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,8 +15,23 @@ public class ChatModelConfiguration {
 
 
 	@Bean
+	public ChatClient.Builder chatClientBuilder(final OpenAiChatModel model) {
+		return ChatClient.builder(model);
+	}
+
+
+	@Bean
 	public ChatClient openAiChatClient(final OpenAiChatModel openAiChatModel) {
 		return ChatClient.create(openAiChatModel);
+	}
+
+	@Bean
+	public ChatClient sentimentChatClient(final OpenAiChatModel model) {
+		return ChatClient.builder(model)
+				.defaultOptions(OpenAiChatOptions.builder()
+						.temperature(0.1)
+						.build())
+				.build();
 	}
 
 	@Bean
