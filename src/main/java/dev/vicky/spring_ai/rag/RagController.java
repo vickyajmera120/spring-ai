@@ -6,18 +6,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller demonstrating different RAG patterns, including standard prompts
+ * and "stuff-the-prompt" techniques.
+ */
 @RestController
 @RequestMapping("/rag")
 public class RagController {
 
 	private final ChatClient chatClient;
 
-
 	public RagController(@Qualifier("googleChatClient") final ChatClient chatClient) {
 		this.chatClient = chatClient;
 	}
 
-
+	/**
+	 * Endpoint providing a list of popular LLM models and their context windows
+	 * using defaults.
+	 *
+	 * @return A string containing model information.
+	 */
 	@GetMapping("/models")
 	public String models() {
 		return this.chatClient.prompt()
@@ -26,6 +34,14 @@ public class RagController {
 				.content();
 	}
 
+	/**
+	 * Endpoint demonstrating the "stuff-the-prompt" RAG pattern.
+	 * It manually injects a JSON context into the user prompt to ground the LLM's
+	 * response.
+	 *
+	 * @return A string containing model information based on the manually stuffed
+	 *         context.
+	 */
 	@GetMapping("/models/stuff-the-prompt")
 	public String modelsStuffThePrompt() {
 
@@ -95,9 +111,9 @@ public class RagController {
 				]
 				""";
 
-
 		return this.chatClient.prompt()
-				.user(user -> user.text(stuff + "\nCan you give me list of popular LLM AI models and their current context window?"))
+				.user(user -> user.text(
+						stuff + "\nCan you give me list of popular LLM AI models and their current context window?"))
 				.call()
 				.content();
 	}

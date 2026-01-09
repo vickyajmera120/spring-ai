@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller demonstrating structured vs unstructured output for vacation
+ * planning.
+ */
 @RestController
 @RequestMapping("vacation")
 public class VacationController {
@@ -16,6 +20,11 @@ public class VacationController {
 		this.chatClient = chatClient;
 	}
 
+	/**
+	 * Endpoint providing an unstructured list of things to do in Dubai.
+	 *
+	 * @return A plain text response from the LLM.
+	 */
 	@GetMapping("/unstructured")
 	public String unstructured() {
 
@@ -25,7 +34,12 @@ public class VacationController {
 				.content();
 	}
 
-
+	/**
+	 * Endpoint providing a structured itinerary for a trip to Dubai.
+	 * This uses the entity mapping feature to return a strongly-typed Java object.
+	 *
+	 * @return An Itinerary object containing things to do in Dubai.
+	 */
 	@GetMapping("/structured")
 	public Itinerary structured() {
 
@@ -34,6 +48,5 @@ public class VacationController {
 				.call()
 				.entity(Itinerary.class);
 	}
-
 
 }

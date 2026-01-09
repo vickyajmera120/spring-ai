@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller demonstrating the use of custom Java tools within LLM prompts.
+ */
 @RestController
 public class DateTimeController {
 
@@ -15,6 +18,11 @@ public class DateTimeController {
 		this.chatClient = chatClient;
 	}
 
+	/**
+	 * Endpoint that uses a custom date-time tool to answer questions about dates.
+	 *
+	 * @return The AI response using the local date-time tool.
+	 */
 	@GetMapping("/tools")
 	public String tools() {
 		return this.chatClient.prompt()
@@ -23,6 +31,5 @@ public class DateTimeController {
 				.call()
 				.content();
 	}
-
 
 }

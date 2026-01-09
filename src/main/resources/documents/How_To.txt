@@ -1,0 +1,8 @@
+== [[How To update MediaWiki]] ==
+== [[How to regenerate Secret Key in case it is lost or tampered?]] ==
+== [[How to update database password in case it is modified?]] ==
+== [[How to configure python 2.6.0?]] ==
+== [[How to unregister service?]] ==
+== [[How to check existence of alias?]] ==
+== [[How to configure SMTP system?]] ==
+== [[How to import HTTPs certificate in server?]] ==

@@ -17,6 +17,10 @@ import org.springframework.core.io.Resource;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Configuration for RAG (Retrieval-Augmented Generation) setups.
+ * Sets up a simple vector store for model-related information.
+ */
 @Slf4j
 @Configuration
 public class RagConfiguration {
@@ -24,6 +28,12 @@ public class RagConfiguration {
 	@Value("classpath:/data/models.json")
 	private Resource models;
 
+	/**
+	 * Configures a SimpleVectorStore for general RAG information.
+	 *
+	 * @param embeddingModel The model used for generating embeddings.
+	 * @return A SimpleVectorStore initialized with model data.
+	 */
 	@Bean
 	public SimpleVectorStore simpleVectorStore(final OpenAiEmbeddingModel embeddingModel) {
 

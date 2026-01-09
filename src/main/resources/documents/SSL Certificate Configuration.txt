@@ -1,0 +1,84 @@
+__TOC__
+
+OpsHub will automatically import the certificate if you create or edit a system. 
+Following messages will come as error in case certificate does not import automatically during project or entity selection:
+#Peer is not authenticated
+#Peer's identity has not been verified
+#Handshake failure or Handshake exception
+In case the certificate is not imported, then follow these steps.
+
+===Download HTTPS Certificate===
+
+To access systems deployed on HTTPS from {{SITENAME}}, download HTTP Certificate in machine where {{SITENAME}} is deployed.
+====Mozilla Firefox====
+
+[[File:firefox.png|center|frame]]
+
+
+
+# Go to Browser and open the system URL with HTTPS protocol.
+# Click on the lock icon visible on the upper left side of the address bar.
+# It will open a pop up window, click on '''“More Information”.'''
+# A pop up showing page info will appear, click on '''“View Certificate”.'''
+# A window with certificate details will open, click on '''“Details”''' tab.
+# On Details tab, click on the button '''“Export”.'''
+# Save the certificate on your local drive.
+
+'''Note''': If any hierarchy is present in the certificate, then all the certificates are to be exported.
+
+====Internet Explorer====
+
+[[File:IE.png|center|frame]]
+
+# Go to the browser and open the system URL with HTTPS protocol.
+# Click on the lock icon visible on the right corner of the address bar.
+# It will open a pop up window stating '''“Website Identification”'''
+# Click on''' “View Certificates”''', a window with certificate details will open.
+# Go to '''“Details”''' tab and click on '''“Copy to File”''' Button.
+# A wizard for copying certificate will open.
+# Select the DER encoded binary option and click on next.
+# Click on browse and provide the file name.
+# Save the certificate on some local hard drive.
+
+'''Note''': If any hierarchy is present in the certificate, then all the certificates are to be exported.
+
+
+
+====Google Chrome====
+
+[[File:chrome.png|center|frame]]
+
+# Go to the browser and open the system URL with HTTPS protocol
+# Click on lock icon visible on the upper left corner of the address bar 
+# It will open a pop up stating '''“Identity Verified”'''
+# Go to''' “Connection” '''tab and click on''' “Certificate Information”'''
+# Go to''' “Details” '''tab and click on''' “Copy to File” '''Button
+# A wizard for copying certificate will appear.
+# Select the DER encoded binary option and click on next.
+# Click on Browse and provide file name.
+# Save the certificate on some local hard drive.
+
+'''Note''': If any hierarchy is present in the certificate, then all the certificates are to be exported.
+
+
+
+===Import SSL Certificate through Console===
+
+Following are the steps to import downloaded certificate into {{SITENAME}} server:
+
+:1. Open Command Prompt with Administrator privileges. Right click on <nowiki>cmd.ex</nowiki>e and select '''“Run as Administrator”.'''<br>
+:2. Navigate to “'''&lt;&lt;OpsHub_Installation_Directory&gt;&gt;\AppData\OpsHubData'''” folder. <br>
+:3. Run the following command: <br>
+:: [Note: '''Default installation path for HTTPS Certificate''':  “&lt;&lt;OpsHub_Installation_Directory&gt;&gt;\AppData\OpsHubData\cacerts”]
+	
+::<code>keytool –importcert -alias '''''&lt;&lt;certificate alias&gt;&gt;''''' -keystore '''''&lt;&lt;path&gt;&gt;''''' -file '''''"Certificate_Location\Certificate <nowiki>filename.ex</nowiki>tension"'''''</code>
+
+::'''''For e.g.: '''keytool -importcert -alias httpscertifcate -keystore "C:\Program Files\OpsHub\AppData\OpsHubData\cacerts" –file "C:\Users\Administrator\Desktop\certificate.crt".
+
+:4. On clicking the enter button, it will ask for a password. Please provide the password.<br/>
+:: ['''Note:''' Default key store password for OpsHub Integration Manager is '''‘changeit’'''].
+:5. Type '''‘yes’''', when it asks for “'''Trust this certificate?”''' <br>
+:6. Restart OpsHub Server. <br>
+
+::'''Note''': If any hierarchy is present in the certificate, then all the certificates are required to be imported.
+::'''Note''': If you have multiple certificates of end systems configured in {{SITENAME}} imported into the {{SITENAME}}'s Keystore, and these certificates have different private key passwords, you can use the Certificate Password Encryptor Utility to encrypt and store the passwords. This utility will create a cacert_config.properties file containing all the certificate alias names and their passwords in encrypted format. You can then use this file to load certificates from the Keystore in {{SITENAME}}.

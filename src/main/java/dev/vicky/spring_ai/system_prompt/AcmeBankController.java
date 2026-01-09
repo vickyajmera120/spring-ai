@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller for AcmeBank customer service using system prompts to restrict AI
+ * behavior.
+ */
 @RestController
 @RequestMapping("/acme")
 public class AcmeBankController {
@@ -17,7 +21,12 @@ public class AcmeBankController {
 		this.chatClient = googleChatClient;
 	}
 
-
+	/**
+	 * Endpoint for chatting with the AcmeBank assistant.
+	 *
+	 * @param message The user's query.
+	 * @return The AI response, restricted to banking topics.
+	 */
 	@GetMapping("/chat")
 	public String chat(@RequestParam String message) {
 
@@ -27,7 +36,7 @@ public class AcmeBankController {
 				- Account balance and transactions
 				- Branch locations and hours
 				- General banking services
-				
+
 				If asked about anything else, respond: "I can help with banking related queries only".
 				""";
 

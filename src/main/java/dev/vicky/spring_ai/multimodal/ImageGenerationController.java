@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller for generating images using AI models like DALL-E.
+ */
 @RestController
 @RequestMapping("/images")
 public class ImageGenerationController {
@@ -24,6 +27,13 @@ public class ImageGenerationController {
         this.imageModel = imageModel;
     }
 
+    /**
+     * Generates an image based on the provided text prompt.
+     *
+     * @param prompt The description of the image to be generated.
+     * @return A ResponseEntity containing the prompt and the URL of the generated
+     *         image.
+     */
     @GetMapping("/generate")
     public ResponseEntity<Map<String, String>> generateImage(@RequestParam String prompt) {
 
@@ -42,8 +52,7 @@ public class ImageGenerationController {
 
         return ResponseEntity.ok(Map.of(
                 "prompt", prompt,
-                "url", url
-                ));
+                "url", url));
     }
 
 }
